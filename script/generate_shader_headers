@@ -1,0 +1,28 @@
+# generate shader headers
+
+import os
+import subprocess
+
+process_cmd = "glsl-to-spirv"
+solution_dir = os.path.join(os.getcwd(), os.pardir)
+dir_in = os.path.join(solution_dir, "data/shaders")
+dir_out = os.path.join(solution_dir, "data/include")
+sdk_path = os.environ.get("VULKAN_SDK")
+validator_path = os.path.join(sdk_path, "Bin", "glslangValidator.exe")
+
+for filename in os.listdir(dir_in):
+    if filename.endswith(".vert") or filename.endswith(".frag") or filename.endswith(".geom") or filename.endswith(".comp"):
+        try:
+            args = [
+                "py",
+                "-3",
+                process_cmd,
+                os.path.join(dir_in, filename),
+                os.path.join(dir_out, filename + ".h"),
+                validator_path
+            ]
+            output = subprocess.check_output(args, universal_newlines=True)
+        except subprocess.CalledProcessError as e:
+            print(e.output)
+            exit(1)
+exit(0)

@@ -1,0 +1,58 @@
+# prebuild
+
+import os
+import sys
+import subprocess
+from shutil import copy
+
+# copy dll to output folder
+
+solution_dir = sys.argv[1]
+configuration = sys.argv[2]
+dll_filename = "assimp-vc140-mt.dll"
+
+out_path = os.path.join(solution_dir, "build", configuration, dll_filename)
+in_path = os.path.join(solution_dir, "extern/assimp/bin", configuration, dll_filename)
+
+if not os.path.exists(out_path):
+    try:
+        copy(in_path, out_path)
+    except IOError as e:
+        print(e.output)
+        exit(1)
+
+# generate shader headers
+
+sdk_path = os.environ.get("VULKAN_SDK")
+validator_path = os.path.join(sdk_path, "Bin", "glslangValidator.exe")
+cmd_path = os.path.join(solution_dir, "script", "glsl-to-spirv")
+
+in_path = os.path.join(solution_dir, "data/shaders")
+out_path = os.path.join(solution_dir, "data/include")
+
+def comp_mtime(f1, f2):
+   return os.path.getmtime(f1) > os.path.getmtime(f2)
+
+for filename in os.listdir(in_path):
+    if filename.endswith(".vert") or filename.endswith(".frag") or filename.endswith(".geom") or filename.endswith(".comp"):
+        # generate if header does not exist or have been updated...
+        src_path = os.path.join(in_path, filename)
+        header_path = os.path.join(out_path, filename + ".h")
+        updated = not os.path.exists(header_path)
+        updated = updated or comp_mtime(src_path, header_path)
+        if updated:
+            print("glsl-to-spirv %s" % src_path)
+            try:
+                args = [
+                    "py",
+                    "-3",
+                    cmd_path,
+                    src_path,
+                    header_path,
+                    validator_path
+                ]
+                output = subprocess.check_output(args, universal_newlines=True)
+            except subprocess.CalledProcessError as e:
+                print(e.output)
+                exit(1)
+exit(0)
