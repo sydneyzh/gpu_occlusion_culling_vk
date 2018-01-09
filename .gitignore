@@ -33,6 +33,7 @@
 
 # VS
 .vs
+*.TMP
 
 # Generated shader headers
 *.vert.h
