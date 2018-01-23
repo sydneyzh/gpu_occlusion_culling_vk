@@ -148,7 +148,7 @@ private:
         auto available_features = static_cast<VkPhysicalDeviceFeatures>(phy_dev.getFeatures());
         auto avail_ptr = reinterpret_cast<VkBool32*>(&available_features);
         auto len = sizeof(VkPhysicalDeviceFeatures) / sizeof(VkBool32);
-        for (auto i = 0; i < len; i++) {
+        for (size_t i = 0; i < len; i++) {
             if (req_ptr[i] == VK_TRUE && avail_ptr[i] == VK_FALSE) {
                 std::cout << MSG_PREFIX << "physical device feature #" << i << " is required but not supported"
                     << std::endl;

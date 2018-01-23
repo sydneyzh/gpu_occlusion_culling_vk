@@ -7,7 +7,7 @@ class FPS_counter
 {
 public:
 
-    FPS_counter(float countdown = 60) :
+    FPS_counter(uint32_t countdown = 60) :
         countdown_(countdown)
     {}
 

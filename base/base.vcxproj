@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;VK_USE_PLATFORM_WIN32_KHR;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;NOMINMAX;ENABLE_VULKAN_RENDERDOC_CAPTURE;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%VULKAN_SDK%/Include/;$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;$(SolutionDir)data/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VULKAN_SDK%/Include/;$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;VK_USE_PLATFORM_WIN32_KHR;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;NOMINMAX;ENABLE_VULKAN_RENDERDOC_CAPTURE;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%VULKAN_SDK%/Include/;$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;$(SolutionDir)data/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VULKAN_SDK%/Include/;$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -169,9 +169,9 @@
     <ClInclude Include="include\Camera.hpp" />
     <ClInclude Include="include\Device.hpp" />
     <ClInclude Include="include\FPS_counter.hpp" />
+    <ClInclude Include="include\Geometries.hpp" />
     <ClInclude Include="include\math.hpp" />
-    <ClInclude Include="include\Model.hpp" />
-    <ClInclude Include="include\path.h" />
+    <ClInclude Include="include\Model_base.hpp" />
     <ClInclude Include="include\Physical_device.hpp" />
     <ClInclude Include="include\Program_base.hpp" />
     <ClInclude Include="include\Prog_info_base.hpp" />

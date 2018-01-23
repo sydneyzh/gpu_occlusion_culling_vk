@@ -36,9 +36,6 @@
     <ClInclude Include="include\math.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Model.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Physical_device.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -81,7 +78,10 @@
     <ClInclude Include="include\Text_overlay.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\path.h">
+    <ClInclude Include="include\Geometries.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Model_base.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

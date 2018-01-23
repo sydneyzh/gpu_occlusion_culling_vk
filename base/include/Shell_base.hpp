@@ -4,6 +4,9 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 #include <Windows.h>
+#ifndef WH_NCHITTEST
+#define WM_NCHITTEST 0x0084
+#endif
 
 namespace base
 {
@@ -133,6 +136,11 @@ private:
     LRESULT handle_message_(UINT msg, WPARAM wparam, LPARAM lparam)
     {
         switch (msg) {
+            case WM_GETMINMAXINFO:
+            {
+                on_get_minmax_info_(lparam);
+            }
+            break;
             case WM_SIZE:
             {
                 UINT w = LOWORD(lparam);
@@ -198,7 +206,9 @@ private:
     }
 
 protected:
-    Prog_info_base * p_info_base_;
+    Prog_info_base *p_info_base_;
+    MINMAXINFO FAR *p_minmax_info_;
     virtual void window_resize_(uint32_t width, uint32_t height) = 0;
+    virtual void on_get_minmax_info_(LPARAM lparam) {};
 };
 } // namespace base

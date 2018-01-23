@@ -74,8 +74,9 @@ public:
                                      VK_WHOLE_SIZE));
     }
 
-    void update_desc_buf_info(vk::DeviceSize offset, vk::DeviceSize range)
+    void update_descriptor(vk::DeviceSize offset = 0, vk::DeviceSize range = VK_WHOLE_SIZE)
     {
+        assert(offset < range);
         desc_buf_info = vk::DescriptorBufferInfo(buf, offset, range);
     }
 
@@ -138,6 +139,7 @@ inline void allocate_and_bind_buffer_memory(Physical_device* p_phy_dev,
         p_dev->dev.bindBufferMemory(p_buf->buf,
                                     mem,
                                     offset);
+
         if (mapped_flag) {
             p_buf->mapped = reinterpret_cast<uint8_t*>(ptr) + offset;
         }

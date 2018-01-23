@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Prog_info.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -29,19 +24,13 @@
     <ClInclude Include="Shell.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Swapchain.hpp">
+    <ClInclude Include="Model.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\data\shaders\culling.frag">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="..\data\shaders\culling.geom">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="..\data\shaders\simple.vert">
-      <Filter>Source Files</Filter>
-    </None>
+    </ClCompile>
   </ItemGroup>
 </Project>

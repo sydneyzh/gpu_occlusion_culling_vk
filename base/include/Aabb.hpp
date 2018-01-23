@@ -9,6 +9,8 @@ public:
     glm::vec3 min;
     glm::vec3 max;
 
+    Aabb() {}
+
     Aabb(const glm::vec3& min, const glm::vec3& max)
         :min(min), max(max)
     {}

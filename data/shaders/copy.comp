@@ -1,0 +1,22 @@
+#version 450 core
+
+layout(local_size_x = 32, local_size_y = 32) in;
+layout(set = 0, binding = 0, r32f) uniform image2D depth_staging;
+layout(set = 0, binding = 1) uniform sampler2D depth_src;
+layout(push_constant) uniform Level_info {
+    ivec2 src_start;
+    ivec2 dst_start;
+    ivec2 dst_mipmap_size;
+    ivec2 src_image_size;
+} level;
+
+void main()
+{
+    ivec2 dst_offset = min(level.dst_mipmap_size - 1, ivec2(gl_GlobalInvocationID.xy));
+    ivec2 dst_texel_pos = level.dst_start + dst_offset;
+
+    ivec2 src_offset = dst_offset;
+    vec2 src_uv = vec2(level.src_start + src_offset) / vec2(level.src_image_size);
+    float res = texture(depth_src, src_uv).r;
+    imageStore(depth_staging, dst_texel_pos, vec4(res, 0.f, 0.f, 0.f));
+}

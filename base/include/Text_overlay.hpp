@@ -9,8 +9,6 @@
 #include "Buffer.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
-#include "text_overlay.vert.h"
-#include "text_overlay.frag.h"
 
 #include <string>
 #include <map>
@@ -421,8 +419,8 @@ protected:
         // shaders
         p_vs = new base::Shader(p_dev_, vk::ShaderStageFlagBits::eVertex);
         p_fs = new base::Shader(p_dev_, vk::ShaderStageFlagBits::eFragment);
-        p_vs->generate(sizeof(text_overlay_vert), text_overlay_vert);
-        p_fs->generate(sizeof(text_overlay_frag), text_overlay_frag);
+        p_vs->generate(data_dir() + "shaders/text_overlay.vert.spv");
+        p_fs->generate(data_dir() + "shaders/text_overlay.frag.spv");
     }
 
     void prepare_mesh_()

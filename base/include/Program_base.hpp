@@ -58,7 +58,9 @@ public:
         enable_validation_(enable_validation),
         p_info_(p_info),
         p_shell_(p_shell)
-    {}
+    {
+        std::cout << MSG_PREFIX << "enable validation: " << (enable_validation_ ? "true" : "false") << std::endl;
+    }
 
     virtual ~Program_base()
     {

@@ -84,7 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%VULKAN_SDK%/Include/;$(SolutionDir)base/;$(SolutionDir)data/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%VULKAN_SDK%/Include/;$(SolutionDir)base/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;VK_USE_PLATFORM_WIN32_KHR;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;NOMINMAX;ENABLE_VULKAN_RENDERDOC_CAPTURE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -114,7 +114,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%VULKAN_SDK%/Include/;$(SolutionDir)base/;$(SolutionDir)data/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extern/glm/;$(SolutionDir)extern/gli/;$(SolutionDir)extern/assimp/include/;%VULKAN_SDK%/Include/;$(SolutionDir)base/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;VK_USE_PLATFORM_WIN32_KHR;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;NOMINMAX;ENABLE_VULKAN_RENDERDOC_CAPTURE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -145,13 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="Model.hpp" />
     <ClInclude Include="Program.hpp" />
     <ClInclude Include="Prog_info.hpp" />
     <ClInclude Include="Shell.hpp" />
-    <ClInclude Include="Swapchain.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\base\base.vcxproj">
@@ -159,9 +156,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\data\shaders\culling.frag" />
-    <None Include="..\data\shaders\culling.geom" />
-    <None Include="..\data\shaders\simple.vert" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

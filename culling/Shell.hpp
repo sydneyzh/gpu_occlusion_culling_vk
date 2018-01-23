@@ -4,9 +4,9 @@
 class Shell : public base::Shell_base
 {
 public:
-    float orbit_speed = 0.04f;
-    float zoom_speed = 0.1f;
-    float pan_speed = 0.05f;
+    float orbit_speed = 0.01f;
+    float zoom_speed = 0.03f;
+    float pan_speed = 0.1f;
 
     Shell(Prog_info* p_info,
           base::Camera* p_camera) :
@@ -45,6 +45,15 @@ public:
             case base::KEY_S:p_camera_->forward(pan_speed); // move backward
                 break;
 
+            case::base::KEY_F1:p_info_->select_mode(1);
+                break;
+            case::base::KEY_F2:p_info_->select_mode(2);
+                break;
+            case::base::KEY_F3:p_info_->select_mode(3);
+                break;
+            case::base::KEY_F4:p_info_->select_mode(4);
+                break;
+
             default:base::Shell_base::on_key(key);
                 break;
         }
@@ -58,5 +67,11 @@ private:
     {
         p_info_base_->on_resize(width, height);
         p_camera_->update_aspect(width, height);
+    }
+
+    void on_get_minmax_info_(LPARAM lparam) override {
+       p_minmax_info_ = reinterpret_cast<MINMAXINFO FAR *>(lparam);
+       p_minmax_info_->ptMaxTrackSize.x = p_info_->MAX_DEPTH_IMAGE_WIDTH;
+       p_minmax_info_->ptMaxTrackSize.y = p_info_->MAX_DEPTH_IMAGE_HEIGHT;
     }
 };

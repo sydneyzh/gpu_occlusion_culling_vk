@@ -40,7 +40,9 @@
 *.geom.h
 *.frag.h
 *.comp.h
-*.spv
 
 # Build
 build
+
+# MayaFiles
+*.mayafiles

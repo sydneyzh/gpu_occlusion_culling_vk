@@ -25,10 +25,11 @@ public:
                                                                             code_size,
                                                                             code_ptr));
     }
-
+ 
     void generate(const char *filename)
     {
-        std::ifstream fs(filename, std::ios::binary);
+        assert(file_exists(filename));
+        std::ifstream fs(filename, std::ios::binary | std::ios::in | std::ios::ate);
         if (fs.is_open()) {
             uint32_t size = fs.tellg();
             fs.seekg(0, std::ios::beg);
@@ -42,6 +43,10 @@ public:
             msg.append(filename);
             throw std::runtime_error(msg);
         }
+    }
+
+    void generate(std::string filename) {
+        generate(filename.c_str());
     }
 
     vk::PipelineShaderStageCreateInfo create_pipeline_stage_info()

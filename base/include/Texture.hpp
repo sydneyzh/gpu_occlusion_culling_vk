@@ -222,7 +222,7 @@ public:
         p_dev_->dev.freeMemory(staging_mem);
         p_dev_->dev.destroyBuffer(staging_buffer);
 
-        create_image_view(format);
+        create_image_view_(format);
 
         if (create_sampler) {
             if (sampler_create_info == vk::SamplerCreateInfo()) {
@@ -249,7 +249,7 @@ public:
     }
 
 private:
-    void create_image_view(const vk::Format format)
+    void create_image_view_(const vk::Format format)
     {
         view = p_dev_->dev.createImageView(
             vk::ImageViewCreateInfo(
